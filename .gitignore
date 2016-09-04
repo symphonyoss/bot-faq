@@ -1,0 +1,12 @@
+.idea
+target
+src/main/resources/symphony-bot-user.p12
+*.DS_Store
+runtime-data
+*.iml
+lib/
+
+src/main/java/org/ppollack/symphony/faqbot/models/jira/
+src/main/java/org/ppollack/symphony/faqbot/clients/atlassian/
+
+

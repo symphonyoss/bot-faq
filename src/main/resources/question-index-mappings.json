@@ -1,0 +1,29 @@
+{
+  "question-type": {
+    "properties": {
+      "questionId":  {
+        "type":   "string",
+        "index":  "not_analyzed"
+      },
+      "faqtext": {
+        "type": "string",
+        "analyzer": "english"
+      },
+      "answers": {
+        "type": "nested",
+        "properties": {
+          "answerId": {
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "upvotes": {
+            "type": "long"
+          },
+          "downvotes": {
+            "type": "long"
+          }
+        }
+      }
+    } // end question-type.properties
+  } // end question-type
+}

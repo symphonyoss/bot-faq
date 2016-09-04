@@ -1,0 +1,74 @@
+phase 1
+-------
+search for questions, post new questions, answer posted questions, upvote/downvote, show scoreboard
+design
+elasticsearch to store data
+question w/ answers together as json object in index
+search question to use stemming and stop words to find questions
+scoreboard cached, kept up to date at all times
+all questions to faqbot to be forwarded to creator
+at-mention faqbot without using a special command (e.g. scoreboard, experts) for a question search -> faqbot returns top X questions along with # of answers and answer quality ratio (e.g. upvote/downvote) -> ask faqbot to display a specific question along with its answers OR tell faqbot to post question anew
+when a question is answered, the asking user gets a notification (IM from faqbot)
+when an answer is voted, the answering user gets a notification (IM from faqbot)
+
+
+phase 2
+-------
+automatically forward new questions to suspected subject matter experts
+adapt subject matter expert mappings/rankings based on questions answered/upvoted
+new faqbot special command: experts
+prints out listing of categories along with top X experts with scores for each
+design
+initial data: category to expert mapping, where each expert has a score (to facilitate ranking of the expert for the associated category)
+expert score is (total upvotes - total downvotes), e.g. 10-3=7
+using question query, search for question categories -> pick best one and ask top 5 people (ties yield a higher # of people) the question
+when someone answers a question, they are added or updated in the associated category with the associated score
+categories and experts
+environments (deployment environments, cloud environments, etc)
+pau1, dragan, matt j, kyle
+engineering services
+dragan, matt j, eric m, milan, nacho
+backend dev
+kyle, harper, bruce, ariel, paul, greg, cal, aileen, kirk, neal, tim, florin, sushil, long, arturi
+frontend dev
+slipper, lynn, glenn, tony, wes, jun, neal, jared, van buren
+qa
+jimmy, tim, kevin, annie
+mobile
+raymond, ??
+ios
+raymond, ??
+android
+raymond, ??
+product management
+pau2, koray, onur, ann d, thibaud
+sales
+??
+advertising, marketing
+al, ??
+hr
+catherine, ??
+payroll
+??
+legal
+scott, eran
+companies (names, domains, msg version, etc)
+pau1, greg, kyle
+continuous integration, pipelines, jenkins, pr builder
+heip, pau1, arturi, ariel
+support
+sarah, ??
+
+
+phase 3
+-------
+search external sources (e.g. confluence, github readme files) so that faqbot can answer questions
+start with confluence, use API to find documents…but need a way to come up with confidence to avoid giving garbage answers?
+interface for arbitrary things to plug into
+index docs into elasticsearch
+link capture: by linking to faqbot and then forwarding, faqbot can capture which of the links it has provided have been clicked — this is cool but doesn’t score highly in terms of cost/benefit
+faqbot posts findings an answers, just like any other user
+faqbot must have a very high confidence in a potential answer before posting it
+typical search engine scoring can work well for this
+term match density (is that idf?)
+

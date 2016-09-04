@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  faqbot-elasticsearch:
+      image: elasticsearch
+      container_name: faqbot-elasticsearch
+      ports:
+        - '9200:9200'
+        - '9300:9300'
+      networks:
+        localbridge:
+          aliases:
+            - faqbot
+      volumes:
+      -  $PWD/runtime-data:/usr/share/elasticsearch/data
+      -  $PWD/src/main/resources/es-config/:/usr/share/elasticsearch/config
+
+
+networks:
+  localbridge:
+    driver: bridge
